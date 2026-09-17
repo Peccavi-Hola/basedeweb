@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio académico de Base de Datos de Anderson Chang Campos - Universidad Peruana Los Andes.">
+  <title>| Portafolio Base de Datos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="background-code" aria-hidden="true">
+    <span>SELECT *</span>
+    <span>root@localhost</span>
+    <span>CREATE TABLE</span>
+    <span>010101</span>
+    <span>mysql&gt;</span>
+    <span>INNER JOIN</span>
+    <span>{ }</span>
+    <span>sudo</span>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Inicio">
+      <img class="brand-logo" src="img/logo-upla.png" alt="Logo de la Universidad Peruana Los Andes">
+      <span class="brand-terminal"><span class="brand-prompt">ander@uplandes</span><span class="brand-path">:~$</span></span>
+    </a>
+
+    <button id="menuToggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav id="mainNav" class="main-nav" aria-label="Navegación principal">
+      <a href="#home">/home</a>
+      <a href="#about">/about</a>
+      <a href="#units">/units</a>
+      <a href="#projects">/projects</a>
+      <a href="#evidencias">/evidencias</a>
+      <a href="#contact">/contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section-shell">
+      <div class="terminal-window hero-terminal reveal">
+        <div class="terminal-header">
+          <div class="window-buttons" aria-hidden="true">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-title">ander@uplandes: ~/portfolio</div>
+          <div class="terminal-header-icon"><i class="fa-solid fa-terminal"></i></div>
+        </div>
+
+        <div class="terminal-body">
+          <div id="typingTerminal" class="typing-terminal" aria-live="polite"></div>
+
+          <div class="hero-title-wrap">
+            <div class="terminal-label">[ portfolio.service ]</div>
+            <h1>PORTAFOLIO ACADÉMICO<br><span>BASE DE DATOS</span><span class="blink-cursor">_</span></h1>
+            <p class="hero-subtitle">
+              Ingeniería de Sistemas y Computación · Universidad Peruana Los Andes
+            </p>
+          </div>
+
+          <a class="command-button" href="#units">
+            <span class="cmd-prefix">&gt;</span> ./explorar_portafolio
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-grid reveal">
+        <div class="mini-status">
+          <span class="status-dot"></span>
+          <span>SYSTEM ONLINE</span>
+        </div>
+        <div class="hero-tech">
+          <span>Linux</span>
+          <span>SQL</span>
+          <span>MySQL</span>
+          <span>Data Modeling</span>
+          <span>Server Admin</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/about</span>
+        <h2>Perfil del estudiante</h2>
+        <p>$ cat perfil.txt</p>
+      </div>
+
+      <div class="about-grid">
+        <article class="terminal-card profile-card reveal">
+          <div class="card-topline">
+            <span><i class="fa-solid fa-user"></i> perfil.txt</span>
+            <span class="muted">-rw-r--r--</span>
+          </div>
+
+          <div class="profile-photo">
+            <div class="avatar-placeholder">
+              <i class="fa-solid fa-user-astronaut"></i>
+              <span>img/perfil/foto.jpg</span>
+              <small>Reemplaza este espacio con tu fotografía</small>
+            </div>
+          </div>
+
+          <div class="profile-data terminal-list">
+            <p><span>Nombre:</span> Anderson Chang Campos</p>
+            <p><span>Carrera:</span> Ingeniería de Sistemas y Computación</p>
+            <p><span>Universidad:</span> Universidad Peruana Los Andes</p>
+            <p><span>Curso:</span> Base de Datos</p>
+          </div>
+        </article>
+
+        <article class="terminal-card bio-card reveal">
+          <div class="card-topline">
+            <span><i class="fa-solid fa-file-lines"></i> bio.md</span>
+            <span class="muted">UTF-8</span>
+          </div>
+          <div class="bio-content">
+            <p class="prompt-line"><span class="prompt">$</span> cat bio.md</p>
+            <p>
+              Soy estudiante de Ingeniería de Sistemas y Computación interesado en bases de datos,
+              desarrollo de software, sistemas operativos, servidores y tecnologías de información.
+              Este portafolio reúne las actividades y conocimientos desarrollados durante el curso
+              de Base de Datos.
+            </p>
+
+            <div class="mini-code-block">
+              <span class="code-comment"># objetivo_actual</span>
+              <span><b>aprender</b> = ["SQL", "Modelado", "Normalización", "Administración"]</span>
+              <span><b>estado</b> = <em>"en_progreso"</em></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="status" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/system/status</span>
+        <h2>Estado del sistema</h2>
+        <p>$ systemctl status student.service</p>
+      </div>
+
+      <div class="status-panel reveal">
+        <div class="status-header">
+          <div>
+            <span class="status-dot"></span>
+            <strong>SYSTEM STATUS</strong>
+          </div>
+          <span class="online-badge">ONLINE</span>
+        </div>
+
+        <div class="status-grid">
+          <div class="status-info terminal-list">
+            <p><span>Student:</span> Anderson Chang Campos</p>
+            <p><span>Career:</span> Ingeniería de Sistemas</p>
+            <p><span>Course:</span> Base de Datos</p>
+            <p><span>Units:</span> 4</p>
+            <p><span>Weeks:</span> 16</p>
+            <p><span>Status:</span> <b class="success-text">ONLINE</b></p>
+          </div>
+
+          <div class="progress-box">
+            <div class="progress-title">
+              <span>Academic progress</span>
+              <span id="progressValue">75%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-progress="75"></div>
+            </div>
+            <div class="ascii-progress">████████████░░░░</div>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric"><strong>16</strong><span>Semanas</span></div>
+          <div class="metric"><strong>4</strong><span>Unidades</span></div>
+          <div class="metric"><strong>12+</strong><span>Prácticas</span></div>
+          <div class="metric"><strong>4</strong><span>Proyectos</span></div>
+          <div class="metric"><strong>20+</strong><span>Evidencias</span></div>
+          <div class="metric"><strong>SQL</strong><span>Core Skill</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="units" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/course/units</span>
+        <h2>Unidades del curso</h2>
+        <p>$ ls -la unidades/</p>
+      </div>
+
+      <div class="folder-grid reveal">
+        <button class="folder-card" data-target="unit1">
+          <span class="folder-icon"><i class="fa-solid fa-folder-open"></i></span>
+          <strong>unidad_01/</strong>
+          <small>Fundamentos de Base de Datos</small>
+          <code>$ cd unidad_01</code>
+        </button>
+        <button class="folder-card" data-target="unit2">
+          <span class="folder-icon"><i class="fa-solid fa-folder-open"></i></span>
+          <strong>unidad_02/</strong>
+          <small>Diseño y Modelado</small>
+          <code>$ cd unidad_02</code>
+        </button>
+        <button class="folder-card" data-target="unit3">
+          <span class="folder-icon"><i class="fa-solid fa-folder-open"></i></span>
+          <strong>unidad_03/</strong>
+          <small>Lenguaje SQL y Gestión</small>
+          <code>$ cd unidad_03</code>
+        </button>
+        <button class="folder-card" data-target="unit4">
+          <span class="folder-icon"><i class="fa-solid fa-folder-open"></i></span>
+          <strong>unidad_04/</strong>
+          <small>Implementación y Administración</small>
+          <code>$ cd unidad_04</code>
+        </button>
+      </div>
+
+      <div class="units-stack">
+        <article id="unit1" class="unit-panel reveal">
+          <div class="unit-header">
+            <div>
+              <span class="section-path">~/course/unidad_01</span>
+              <h3>Unidad I – Fundamentos de Base de Datos</h3>
+            </div>
+            <span class="unit-tag">4 semanas</span>
+          </div>
+
+          <p class="prompt-line"><span class="prompt">$</span> ls semanas/</p>
+          <div class="week-list">
+            <details class="week-card" open>
+              <summary>
+                <span><i class="fa-regular fa-folder"></i> semana_01</span>
+                <strong>Introducción a las Bases de Datos</strong>
+              </summary>
+              <div class="week-content">
+                <div>
+                  <p class="week-path">~/unidad_01/semana_01</p>
+                  <ul>
+                    <li>Concepto de base de datos.</li>
+                    <li>Características.</li>
+                    <li>Importancia.</li>
+                    <li>Aplicaciones.</li>
+                    <li>Sistemas gestores de bases de datos.</li>
+                  </ul>
+                </div>
+                <div class="command-actions">
+                  <button data-demo="Teoría de la Semana 1 lista para editar.">$ cat teoria.txt</button>
+                  <button data-demo="Agrega tu archivo en documentos/practica_01.pdf">$ open practica.pdf</button>
+                  <button data-demo="Agrega tu imagen en img/evidencias/semana01.png">$ view evidencia.png</button>
+                  <button data-demo="Conclusión de la Semana 1 lista para editar.">$ cat conclusion.txt</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="week-card">
+              <summary>
+                <span><i class="fa-regular fa-folder"></i> semana_02</span>
+                <strong>Sistemas Gestores de Bases de Datos</strong>
+              </summary>
+              <div class="week-content">
+                <ul>
+                  <li>DBMS.</li><li>MySQL.</li><li>PostgreSQL.</li><li>SQL Server.</li><li>Oracle.</li>
+                </ul>
+                <div class="command-actions">
+                  <button data-demo="Contenido editable: DBMS, MySQL, PostgreSQL, SQL Server y Oracle.">$ cat teoria.txt</button>
+                  <button data-demo="Ruta sugerida: documentos/practica_02.pdf">$ open practica.pdf</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="week-card">
+              <summary>
+                <span><i class="fa-regular fa-folder"></i> semana_03</span>
+                <strong>Arquitectura de Bases de Datos</strong>
+              </summary>
+              <div class="week-content">
+                <ul>
+                  <li>Nivel interno.</li><li>Nivel conceptual.</li><li>Nivel externo.</li><li>Independencia de datos.</li>
+                </ul>
+                <div class="command-actions">
+                  <button data-demo="Contenido editable sobre arquitectura de tres niveles.">$ cat teoria.txt</button>
+                  <button data-demo="Ruta sugerida: img/evidencias/arquitectura_bd.png">$ view evidencia.png</button>
+                </div>
+              </div>
+            </details>
+
+            <details class="week-card">
+              <summary>
+                <span><i class="fa-regular fa-folder"></i> semana_04</span>
+                <strong>Modelo Entidad-Relación</strong>
+              </summary>
+              <div class="week-content">
+                <ul>
+                  <li>Entidades.</li><li>Atributos.</li><li>Relaciones.</li><li>Cardinalidad.</li><li>Claves.</li>
+                </ul>
+                <div class="command-actions">
+                  <button data-demo="Contenido editable sobre el modelo Entidad-Relación.">$ cat teoria.txt</button>
+                  <button data-demo="Ruta sugerida: img/evidencias/modelo_er.png">$ view modelo_er.png</button>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article id="unit2" class="unit-panel reveal">
+          <div class="unit-header">
+            <div>
+              <span class="section-path">~/course/unidad_02</span>
+              <h3>Unidad II – Diseño y Modelado de Bases de Datos</h3>
+            </div>
+            <span class="unit-tag">4 semanas</span>
+          </div>
+          <p class="prompt-line"><span class="prompt">$</span> ls semanas/</p>
+
+          <div class="week-list">
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_05</span><strong>Modelo Entidad-Relación Avanzado</strong></summary>
+              <div class="week-content">
+                <ul><li>Entidades fuertes y débiles.</li><li>Generalización y especialización.</li><li>Relaciones complejas.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 5 lista para que agregues teoría, práctica y evidencias.">$ cat contenido.txt</button></div>
+              </div>
+            </details>
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_06</span><strong>Modelo Relacional</strong></summary>
+              <div class="week-content">
+                <ul><li>Relaciones y tuplas.</li><li>Claves primarias y foráneas.</li><li>Integridad referencial.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 6 lista para editar.">$ cat contenido.txt</button></div>
+              </div>
+            </details>
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_07</span><strong>Normalización</strong></summary>
+              <div class="week-content">
+                <ul><li>1FN.</li><li>2FN.</li><li>3FN.</li><li>Dependencias funcionales.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 7 lista para editar.">$ cat normalizacion.txt</button></div>
+              </div>
+            </details>
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_08</span><strong>Diseño de una Base de Datos</strong></summary>
+              <div class="week-content">
+                <ul><li>Requerimientos.</li><li>Diseño conceptual.</li><li>Diseño lógico.</li><li>Diseño físico.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 8 lista para editar.">$ cat diseno_bd.txt</button></div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article id="unit3" class="unit-panel reveal">
+          <div class="unit-header">
+            <div>
+              <span class="section-path">~/course/unidad_03</span>
+              <h3>Unidad III – Lenguaje SQL y Gestión de Datos</h3>
+            </div>
+            <span class="unit-tag">4 semanas</span>
+          </div>
+          <p class="prompt-line"><span class="prompt">$</span> mysql --user=student --database=course</p>
+
+          <div class="week-list">
+            <details class="week-card" open>
+              <summary><span><i class="fa-regular fa-folder"></i> semana_09</span><strong>Introducción a SQL</strong></summary>
+              <div class="week-content">
+                <div class="sql-block">
+                  <div class="code-label">sql/semana_09.sql</div>
+                  <pre><code class="language-sql">CREATE DATABASE universidad;
+USE universidad;
+
+CREATE TABLE estudiantes (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(100) NOT NULL,
+  carrera VARCHAR(120)
+);</code></pre>
+                </div>
+              </div>
+            </details>
+
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_10</span><strong>Manipulación de Datos</strong></summary>
+              <div class="week-content">
+                <div class="sql-chip-grid">
+                  <span>INSERT INTO</span><span>UPDATE</span><span>DELETE</span><span>SELECT</span>
+                </div>
+                <div class="sql-block">
+                  <pre><code class="language-sql">INSERT INTO estudiantes (nombre, carrera)
+VALUES ('Anderson Chang Campos', 'Ingeniería de Sistemas');
+
+UPDATE estudiantes
+SET carrera = 'Ingeniería de Sistemas y Computación'
+WHERE id = 1;
+
+SELECT * FROM estudiantes;</code></pre>
+                </div>
+              </div>
+            </details>
+
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_11</span><strong>Consultas SQL</strong></summary>
+              <div class="week-content">
+                <div class="sql-chip-grid">
+                  <span>WHERE</span><span>ORDER BY</span><span>GROUP BY</span><span>HAVING</span>
+                </div>
+                <div class="sql-block">
+                  <pre><code class="language-sql">SELECT carrera, COUNT(*) AS total
+FROM estudiantes
+WHERE carrera IS NOT NULL
+GROUP BY carrera
+HAVING COUNT(*) >= 1
+ORDER BY total DESC;</code></pre>
+                </div>
+              </div>
+            </details>
+
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_12</span><strong>Consultas Avanzadas</strong></summary>
+              <div class="week-content">
+                <div class="sql-chip-grid">
+                  <span>INNER JOIN</span><span>LEFT JOIN</span><span>RIGHT JOIN</span><span>SUBQUERIES</span>
+                </div>
+                <div class="sql-block">
+                  <pre><code class="language-sql">SELECT e.nombre, c.nombre AS curso
+FROM estudiantes e
+INNER JOIN matriculas m ON e.id = m.estudiante_id
+INNER JOIN cursos c ON c.id = m.curso_id
+ORDER BY e.nombre;</code></pre>
+                </div>
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <article id="unit4" class="unit-panel reveal">
+          <div class="unit-header">
+            <div>
+              <span class="section-path">~/course/unidad_04</span>
+              <h3>Unidad IV – Implementación y Administración</h3>
+            </div>
+            <span class="unit-tag">4 semanas</span>
+          </div>
+          <p class="prompt-line"><span class="prompt">$</span> sudo systemctl start mysql</p>
+
+          <div class="week-list">
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_13</span><strong>Views y Procedures</strong></summary>
+              <div class="week-content">
+                <ul><li>Vistas.</li><li>Procedimientos almacenados.</li><li>Parámetros y reutilización.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 13 lista para editar.">$ cat views_procedures.txt</button></div>
+              </div>
+            </details>
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_14</span><strong>Triggers</strong></summary>
+              <div class="week-content">
+                <ul><li>BEFORE.</li><li>AFTER.</li><li>INSERT / UPDATE / DELETE.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 14 lista para editar.">$ cat triggers.txt</button></div>
+              </div>
+            </details>
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_15</span><strong>Seguridad y Backup</strong></summary>
+              <div class="week-content">
+                <ul><li>Usuarios y privilegios.</li><li>Copias de seguridad.</li><li>Restauración.</li><li>Buenas prácticas.</li></ul>
+                <div class="command-actions"><button data-demo="Semana 15 lista para editar.">$ cat security_backup.txt</button></div>
+              </div>
+            </details>
+            <details class="week-card">
+              <summary><span><i class="fa-regular fa-folder"></i> semana_16</span><strong>Proyecto Final</strong></summary>
+              <div class="week-content">
+                <ul><li>Integración del proyecto.</li><li>Validación.</li><li>Presentación de resultados.</li></ul>
+                <div class="command-actions"><button class="scroll-project">$ ./proyecto_final.sh</button></div>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/projects/final</span>
+        <h2>Proyecto final</h2>
+        <p>$ ./proyecto_final.sh</p>
+      </div>
+
+      <div class="project-terminal reveal">
+        <div class="boot-log">
+          <span>[<b>OK</b>] Initializing project...</span>
+          <span>[<b>OK</b>] Connecting database...</span>
+          <span>[<b>OK</b>] Database connection: <strong>SUCCESS</strong></span>
+          <span>[<b>OK</b>] Loading tables...</span>
+          <span>[<b>OK</b>] Loading queries...</span>
+          <span>[<b>OK</b>] Project ready.</span>
+        </div>
+
+        <div class="project-grid">
+          <div class="project-info">
+            <span class="muted">project_name</span>
+            <h3>Sistema de Base de Datos Universitario</h3>
+            <p>
+              Espacio editable para presentar tu proyecto final, el problema que resuelve,
+              objetivos, modelos de datos, código SQL, capturas, resultados y conclusiones.
+            </p>
+            <div class="project-fields">
+              <span>01. Descripción</span>
+              <span>02. Problema</span>
+              <span>03. Objetivos</span>
+              <span>04. Modelo E-R</span>
+              <span>05. Modelo Relacional</span>
+              <span>06. Base de Datos</span>
+              <span>07. Código SQL</span>
+              <span>08. Capturas</span>
+              <span>09. Resultados</span>
+              <span>10. Conclusiones</span>
+            </div>
+          </div>
+
+          <div class="project-stack">
+            <div class="stack-label">TECH STACK</div>
+            <span><i class="fa-brands fa-linux"></i> Linux</span>
+            <span><i class="fa-solid fa-database"></i> MySQL</span>
+            <span><i class="fa-solid fa-code"></i> SQL</span>
+            <span><i class="fa-brands fa-php"></i> PHP</span>
+            <span><i class="fa-brands fa-html5"></i> HTML5</span>
+            <span><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="database" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/database/console</span>
+        <h2>Gestor de base de datos</h2>
+        <p>$ mysql -u ander -p</p>
+      </div>
+
+      <div class="mysql-console reveal">
+        <div class="mysql-line"><span>mysql&gt;</span> SHOW DATABASES;</div>
+        <pre class="ascii-table">+--------------------+
+| Database           |
++--------------------+
+| unidad_01          |
+| unidad_02          |
+| unidad_03          |
+| unidad_04          |
+| proyecto_final     |
++--------------------+</pre>
+
+        <div class="mysql-line"><span>mysql&gt;</span> SELECT * FROM conocimientos;</div>
+        <div class="knowledge-table">
+          <div><b>01</b><span>SQL</span><em>active</em></div>
+          <div><b>02</b><span>MySQL</span><em>active</em></div>
+          <div><b>03</b><span>Modelado</span><em>active</em></div>
+          <div><b>04</b><span>Normalización</span><em>active</em></div>
+          <div><b>05</b><span>Consultas</span><em>active</em></div>
+          <div><b>06</b><span>Administración</span><em>learning</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/skills</span>
+        <h2>Habilidades</h2>
+        <p>$ apt list --installed</p>
+      </div>
+
+      <div class="skills-layout">
+        <div class="skills-card reveal">
+          <div class="skill"><div class="skill-title"><span>SQL</span><b>95%</b></div><div class="skill-track"><i data-level="95"></i></div></div>
+          <div class="skill"><div class="skill-title"><span>MySQL</span><b>90%</b></div><div class="skill-track"><i data-level="90"></i></div></div>
+          <div class="skill"><div class="skill-title"><span>Modelado ER</span><b>85%</b></div><div class="skill-track"><i data-level="85"></i></div></div>
+          <div class="skill"><div class="skill-title"><span>Normalización</span><b>82%</b></div><div class="skill-track"><i data-level="82"></i></div></div>
+          <div class="skill"><div class="skill-title"><span>PostgreSQL</span><b>72%</b></div><div class="skill-track"><i data-level="72"></i></div></div>
+          <div class="skill"><div class="skill-title"><span>SQL Server</span><b>70%</b></div><div class="skill-track"><i data-level="70"></i></div></div>
+          <div class="skill"><div class="skill-title"><span>Administración de BD</span><b>65%</b></div><div class="skill-track"><i data-level="65"></i></div></div>
+        </div>
+
+        <div class="packages-card reveal">
+          <div class="package-line"><span>sql</span><b>installed</b></div>
+          <div class="package-line"><span>mysql</span><b>installed</b></div>
+          <div class="package-line"><span>java</span><b>installed</b></div>
+          <div class="package-line"><span>php</span><b>installed</b></div>
+          <div class="package-line"><span>html</span><b>installed</b></div>
+          <div class="package-line"><span>css</span><b>installed</b></div>
+          <div class="package-line"><span>javascript</span><b>installed</b></div>
+          <div class="package-line"><span>git</span><b>installed</b></div>
+          <div class="package-line"><span>linux</span><b>installed</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="technologies" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/technologies</span>
+        <h2>Tecnologías</h2>
+        <p>$ dpkg --list | grep dev-tools</p>
+      </div>
+
+      <div class="tech-grid reveal">
+        <div class="tech-item"><i class="fa-brands fa-linux"></i><span>Linux</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-ubuntu"></i><span>Ubuntu</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-database"></i><span>MySQL</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-database"></i><span>PostgreSQL</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-server"></i><span>SQL Server</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-database"></i><span>Oracle</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-java"></i><span>Java</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-php"></i><span>PHP</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-html5"></i><span>HTML5</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-css3-alt"></i><span>CSS3</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-js"></i><span>JavaScript</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-git-alt"></i><span>Git</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-brands fa-github"></i><span>GitHub</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-code"></i><span>VS Code</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-laptop-code"></i><span>NetBeans</span><small>installed</small></div>
+        <div class="tech-item"><i class="fa-solid fa-server"></i><span>XAMPP</span><small>installed</small></div>
+      </div>
+    </section>
+
+    <section id="evidencias" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/evidencias</span>
+        <h2>Evidencias</h2>
+        <p>$ ls -lh img/evidencias/</p>
+      </div>
+
+      <div class="evidence-grid reveal">
+        <button class="evidence-item" data-image="placeholder-1">
+          <span class="file-permission">-rw-r--r--</span>
+          <i class="fa-regular fa-image"></i>
+          <strong>evidencia_01.png</strong>
+          <small>Semana 01 · Introducción BD</small>
+        </button>
+
+        <button class="evidence-item" data-image="placeholder-2">
+          <span class="file-permission">-rw-r--r--</span>
+          <i class="fa-regular fa-image"></i>
+          <strong>modelo_er.png</strong>
+          <small>Semana 04 · Modelo E-R</small>
+        </button>
+
+        <button class="evidence-item" data-image="placeholder-3">
+          <span class="file-permission">-rw-r--r--</span>
+          <i class="fa-regular fa-image"></i>
+          <strong>normalizacion.png</strong>
+          <small>Semana 07 · 1FN / 2FN / 3FN</small>
+        </button>
+
+        <button class="evidence-item" data-image="placeholder-4">
+          <span class="file-permission">-rw-r--r--</span>
+          <i class="fa-regular fa-image"></i>
+          <strong>consulta_sql.png</strong>
+          <small>Semana 11 · Consultas SQL</small>
+        </button>
+      </div>
+    </section>
+
+    <section id="documents" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/documents</span>
+        <h2>Documentos</h2>
+        <p>$ ls documentos/</p>
+      </div>
+
+      <div class="documents-list reveal">
+        <div class="document-row">
+          <span class="permission">-rw-r--r--</span>
+          <i class="fa-solid fa-file-pdf"></i>
+          <strong>practica_01.pdf</strong>
+          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/practica_01.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+        </div>
+        <div class="document-row">
+          <span class="permission">-rw-r--r--</span>
+          <i class="fa-solid fa-file-pdf"></i>
+          <strong>informe_unidad_01.pdf</strong>
+          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/informe_unidad_01.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+        </div>
+        <div class="document-row">
+          <span class="permission">-rw-r--r--</span>
+          <i class="fa-solid fa-file-pdf"></i>
+          <strong>laboratorio_sql.pdf</strong>
+          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/laboratorio_sql.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+        </div>
+        <div class="document-row">
+          <span class="permission">-rw-r--r--</span>
+          <i class="fa-solid fa-file-pdf"></i>
+          <strong>proyecto_final.pdf</strong>
+          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/proyecto_final.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="console" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/interactive-console</span>
+        <h2>Consola interactiva</h2>
+        <p>Comandos permitidos: help, about, units, skills, projects, clear</p>
+      </div>
+
+      <div class="interactive-console reveal">
+        <div class="console-output" id="consoleOutput">
+          <div><span class="success-text">[READY]</span> Terminal simulada iniciada.</div>
+          <div>Escribe <b>help</b> para ver los comandos disponibles.</div>
+        </div>
+        <form id="consoleForm" class="console-input-line" autocomplete="off">
+          <label for="consoleInput">ander@uplandes:~$</label>
+          <input id="consoleInput" type="text" spellcheck="false" aria-label="Comando de consola">
+        </form>
+      </div>
+    </section>
+
+    <section id="contact" class="section-shell">
+      <div class="section-heading reveal">
+        <span class="section-path">~/contact</span>
+        <h2>Contacto académico</h2>
+        <p>$ cat contact.txt</p>
+      </div>
+
+      <div class="contact-card reveal">
+        <div>
+          <span class="muted">student@portfolio</span>
+          <h3>Chang Campos Anderson</h3>
+          <p>Ingeniería de Sistemas y Computación</p>
+          <p>Universidad Peruana Los Andes</p>
+        </div>
+        <div class="contact-links">
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="mailto:correo@ejemplo.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-terminal">
+      <p><span>ander@uplandes:~$</span> exit</p>
+      <p>Session completed.</p>
+      <p>© 2026 Anderson Chang Campos · Ingeniería de Sistemas y Computación</p>
+      <p>Universidad Peruana Los Andes · Base de Datos</p>
+      <p class="muted">Connection closed.</p>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Regresar arriba">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Asistente visual del portafolio -->
+  <aside id="dbAssistant" class="db-assistant" aria-label="Asistente del portafolio">
+    <div id="assistantPanel" class="assistant-panel" aria-hidden="true">
+      <div class="assistant-header">
+        <span class="assistant-status" aria-hidden="true"></span>
+        <div>
+          <strong>DB Assistant</strong>
+          <small>Sistema activo</small>
+        </div>
+        <button id="assistantClose" class="assistant-close" type="button" aria-label="Cerrar asistente">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="assistant-body">
+        <div class="assistant-message">
+          <span class="assistant-avatar"><i class="fa-solid fa-robot"></i></span>
+          <p>Hola, soy el asistente visual del portafolio de <strong>Anderson Chang Campos</strong>.</p>
+        </div>
+        <div class="assistant-links">
+          <button type="button" data-assistant-target="#units"><i class="fa-solid fa-folder-tree"></i> Ver unidades</button>
+          <button type="button" data-assistant-target="#projects"><i class="fa-solid fa-database"></i> Ver proyecto</button>
+          <button type="button" data-assistant-target="#evidencias"><i class="fa-regular fa-images"></i> Ver evidencias</button>
+        </div>
+      </div>
+
+      <div class="assistant-console"><span>ander@uplandes:~$</span><span class="assistant-cursor">_</span></div>
+    </div>
+
+    <button id="assistantToggle" class="assistant-toggle" type="button" aria-label="Abrir asistente" aria-expanded="false" aria-controls="assistantPanel">
+      <i class="fa-solid fa-robot"></i>
+      <span class="assistant-online" aria-hidden="true"></span>
+    </button>
+  </aside>
+
+  <div id="imageModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close-modal aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="modalVisual" class="modal-visual">
+        <i class="fa-regular fa-image"></i>
+      </div>
+      <h3 id="modalTitle">Vista de evidencia</h3>
+      <p id="modalText">Reemplaza este marcador por una imagen real dentro de img/evidencias/.</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
