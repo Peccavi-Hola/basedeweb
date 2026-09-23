@@ -66,6 +66,7 @@ async function runTerminalIntro() {
 document.addEventListener("DOMContentLoaded", () => {
   runTerminalIntro();
 
+  // Navigation Menu Toggle
   const menuToggle = document.getElementById("menuToggle");
   const mainNav = document.getElementById("mainNav");
 
@@ -87,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Scroll Reveals
   const revealItems = document.querySelectorAll(".reveal");
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -99,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   revealItems.forEach(item => revealObserver.observe(item));
 
+  // Progress Bar Animations
   const progressFill = document.querySelector(".progress-fill");
   const skillFills = document.querySelectorAll(".skill-track i");
 
@@ -121,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusSection = document.getElementById("status");
   if (statusSection) progressObserver.observe(statusSection);
 
+  // Folder Quick Navigation
   document.querySelectorAll(".folder-card").forEach(button => {
     button.addEventListener("click", () => {
       const target = document.getElementById(button.dataset.target);
@@ -146,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Toast notifications
   const toast = document.getElementById("toast");
   let toastTimer;
 
@@ -163,40 +168,403 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const modal = document.getElementById("imageModal");
+  // Helper to parse comma separated or JSON array data attributes
+  function parseMediaList(raw) {
+    if (!raw) return [];
+    if (Array.isArray(raw)) return raw;
+    const str = String(raw).trim();
+    if (str.startsWith("[") && str.endsWith("]")) {
+      try {
+        return JSON.parse(str);
+      } catch (e) {
+        // Fallback to split
+      }
+    }
+    return str.split(",").map(s => s.trim()).filter(Boolean);
+  }
+
+  // =========================================================
+  // IMAGE GALLERY MODAL & FULLSCREEN EXPAND
+  // =========================================================
+  const imageModal = document.getElementById("imageModal");
+  const galleryCard = document.querySelector(".modal-gallery-card");
   const modalTitle = document.getElementById("modalTitle");
   const modalText = document.getElementById("modalText");
+  const modalImg = document.getElementById("modalImg");
+  const modalCounter = document.getElementById("modalCounter");
+  const modalFilename = document.getElementById("modalFilename");
+  const modalVisual = document.getElementById("modalVisual");
+  const galleryPrev = document.getElementById("galleryPrev");
+  const galleryNext = document.getElementById("galleryNext");
+  const galleryThumbs = document.getElementById("galleryThumbs");
+  const modalExpandBtn = document.getElementById("modalExpandBtn");
+  const expandBtnText = document.getElementById("expandBtnText");
 
-  document.querySelectorAll(".evidence-item").forEach(item => {
-    item.addEventListener("click", () => {
-      const filename = item.querySelector("strong")?.textContent || "evidencia.png";
-      if (modalTitle) modalTitle.textContent = filename;
-      if (modalText) {
-        modalText.textContent = `Vista de ${filename}. Para usar una imagen real, coloca el archivo dentro de img/evidencias/ y reemplaza este marcador en index.html.`;
+  let currentImages = [];
+  let currentImageIndex = 0;
+  let isExpanded = false;
+
+  function setExpandedMode(expand) {
+    isExpanded = expand;
+    if (galleryCard) {
+      galleryCard.classList.toggle("expanded", isExpanded);
+    }
+    if (modalExpandBtn) {
+      modalExpandBtn.innerHTML = isExpanded
+        ? '<i class="fa-solid fa-compress"></i> <span>Reducir</span>'
+        : '<i class="fa-solid fa-expand"></i> <span>Expandir</span>';
+    }
+  }
+
+  if (modalExpandBtn) {
+    modalExpandBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setExpandedMode(!isExpanded);
+    });
+  }
+
+  if (modalImg) {
+    modalImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setExpandedMode(!isExpanded);
+    });
+
+    modalImg.onerror = () => {
+      if (modalVisual) {
+        modalVisual.classList.remove("has-image");
+        modalVisual.innerHTML = `
+          <div class="modal-placeholder-notice">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong>Archivo no encontrado</strong>
+            <p>Guarda tu imagen en:</p>
+            <code>${currentImages[currentImageIndex] || "img/evidencias/"}</code>
+          </div>
+        `;
       }
-      if (modal) {
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
+    };
+  }
+
+  function updateGalleryUI() {
+    if (!currentImages || currentImages.length === 0) {
+      if (modalVisual) {
+        modalVisual.classList.remove("has-image");
+        modalVisual.innerHTML = `
+          <div class="modal-placeholder-notice">
+            <i class="fa-regular fa-image"></i>
+            <strong>Sin imágenes configuradas</strong>
+            <p>Agrega los nombres de archivo en el atributo <code>data-images</code>.</p>
+          </div>
+        `;
       }
+      if (modalCounter) modalCounter.textContent = "0 / 0";
+      if (modalFilename) modalFilename.textContent = "sin_archivo";
+      if (galleryPrev) galleryPrev.style.display = "none";
+      if (galleryNext) galleryNext.style.display = "none";
+      if (galleryThumbs) galleryThumbs.innerHTML = "";
+      return;
+    }
+
+    const currentSrc = currentImages[currentImageIndex];
+    const filename = currentSrc.split("/").pop();
+
+    // Ensure image and controls are inside modalVisual
+    if (modalVisual) {
+      modalVisual.innerHTML = `
+        <button class="gallery-nav prev" id="galleryPrev" aria-label="Imagen anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <img id="modalImg" src="${currentSrc}" alt="${filename}" title="Clic para expandir / reducir">
+        <i id="modalIcon" class="fa-regular fa-image"></i>
+        <button class="gallery-nav next" id="galleryNext" aria-label="Imagen siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      `;
+      modalVisual.classList.add("has-image");
+
+      const newImg = modalVisual.querySelector("img");
+      const newPrev = modalVisual.querySelector(".gallery-nav.prev");
+      const newNext = modalVisual.querySelector(".gallery-nav.next");
+
+      if (newImg) {
+        newImg.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setExpandedMode(!isExpanded);
+        });
+        newImg.onerror = () => {
+          modalVisual.classList.remove("has-image");
+          modalVisual.innerHTML = `
+            <button class="gallery-nav prev" id="galleryPrev" aria-label="Imagen anterior">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="modal-placeholder-notice">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <strong>Imagen aún no disponible</strong>
+              <p>Coloca tu archivo en la carpeta:</p>
+              <code>${currentSrc}</code>
+            </div>
+            <button class="gallery-nav next" id="galleryNext" aria-label="Imagen siguiente">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          `;
+          rebindGalleryNav();
+        };
+      }
+
+      function rebindGalleryNav() {
+        const p = modalVisual.querySelector(".gallery-nav.prev");
+        const n = modalVisual.querySelector(".gallery-nav.next");
+        const hasMult = currentImages.length > 1;
+        if (p) {
+          p.style.display = hasMult ? "flex" : "none";
+          p.onclick = (e) => { e.stopPropagation(); prevGalleryImage(); };
+        }
+        if (n) {
+          n.style.display = hasMult ? "flex" : "none";
+          n.onclick = (e) => { e.stopPropagation(); nextGalleryImage(); };
+        }
+      }
+
+      rebindGalleryNav();
+    }
+
+    if (modalCounter) {
+      modalCounter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+    }
+    if (modalFilename) {
+      modalFilename.textContent = filename;
+    }
+
+    const hasMultiple = currentImages.length > 1;
+
+    if (galleryThumbs) {
+      if (!hasMultiple) {
+        galleryThumbs.innerHTML = "";
+        galleryThumbs.style.display = "none";
+      } else {
+        galleryThumbs.style.display = "flex";
+        galleryThumbs.innerHTML = currentImages.map((src, index) => {
+          const thumbName = src.split("/").pop();
+          const active = index === currentImageIndex ? "active" : "";
+          return `
+            <button type="button" class="gallery-thumb-item ${active}" data-thumb-index="${index}" title="${thumbName}">
+              <img src="${src}" alt="${thumbName}" onerror="this.style.opacity='0.3'">
+              <span>${index + 1}</span>
+            </button>
+          `;
+        }).join("");
+
+        galleryThumbs.querySelectorAll(".gallery-thumb-item").forEach(thumb => {
+          thumb.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const idx = parseInt(thumb.dataset.thumbIndex, 10);
+            if (!isNaN(idx)) {
+              currentImageIndex = idx;
+              updateGalleryUI();
+            }
+          });
+        });
+      }
+    }
+  }
+
+  function openImageGallery({ images, title, desc, startIndex = 0 }) {
+    currentImages = images || [];
+    currentImageIndex = startIndex >= 0 && startIndex < currentImages.length ? startIndex : 0;
+    setExpandedMode(false);
+
+    if (modalTitle) modalTitle.textContent = title || "Vista de evidencia";
+    if (modalText) {
+      modalText.textContent = desc || (currentImages.length ? `${currentImages.length} archivo(s) fotográfico(s).` : "");
+    }
+
+    updateGalleryUI();
+
+    if (imageModal) {
+      imageModal.classList.add("open");
+      imageModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function nextGalleryImage() {
+    if (currentImages.length <= 1) return;
+    currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+    updateGalleryUI();
+  }
+
+  function prevGalleryImage() {
+    if (currentImages.length <= 1) return;
+    currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+    updateGalleryUI();
+  }
+
+  // Hook all image buttons / cards
+  document.querySelectorAll(".evidence-item, .open-evidence-btn, [data-images], [data-img]").forEach(item => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      let list = [];
+      if (item.dataset.images) {
+        list = parseMediaList(item.dataset.images);
+      } else if (item.dataset.img) {
+        list = [item.dataset.img];
+      }
+
+      const title = item.dataset.title || item.querySelector("strong")?.textContent || "Vista de evidencia";
+      const desc = item.dataset.desc || (list.length > 0
+        ? `Mostrando ${list.length} imagen(es) de ${title}.`
+        : `Vista de ${title}. Agrega tus imágenes en img/evidencias/.`);
+
+      openImageGallery({ images: list, title, desc });
     });
   });
 
-  document.querySelectorAll("[data-close-modal]").forEach(el => {
-    el.addEventListener("click", closeModal);
+  // =========================================================
+  // PDF VIEWER MODAL
+  // =========================================================
+  const pdfModal = document.getElementById("pdfModal");
+  const pdfModalTitle = document.getElementById("pdfModalTitle");
+  const pdfModalText = document.getElementById("pdfModalText");
+  const pdfModalFilename = document.getElementById("pdfModalFilename");
+  const modalPdfFrame = document.getElementById("modalPdfFrame");
+  const pdfOpenNewTab = document.getElementById("pdfOpenNewTab");
+  const pdfDownloadBtn = document.getElementById("pdfDownloadBtn");
+  const pdfFallbackLink = document.getElementById("pdfFallbackLink");
+  const pdfNavTabs = document.getElementById("pdfNavTabs");
+
+  let currentPdfs = [];
+  let currentPdfIndex = 0;
+
+  function updatePdfUI() {
+    if (!currentPdfs || currentPdfs.length === 0) {
+      if (modalPdfFrame) modalPdfFrame.src = "";
+      if (pdfModalFilename) pdfModalFilename.textContent = "";
+      if (pdfNavTabs) pdfNavTabs.style.display = "none";
+      return;
+    }
+
+    const currentSrc = currentPdfs[currentPdfIndex];
+    const filename = currentSrc.split("/").pop();
+
+    if (modalPdfFrame) modalPdfFrame.src = currentSrc;
+    if (pdfModalFilename) pdfModalFilename.textContent = filename;
+    if (pdfOpenNewTab) pdfOpenNewTab.href = currentSrc;
+    if (pdfDownloadBtn) {
+      pdfDownloadBtn.href = currentSrc;
+      pdfDownloadBtn.setAttribute("download", filename);
+    }
+    if (pdfFallbackLink) pdfFallbackLink.href = currentSrc;
+
+    const hasMultiple = currentPdfs.length > 1;
+    if (pdfNavTabs) {
+      if (!hasMultiple) {
+        pdfNavTabs.style.display = "none";
+        pdfNavTabs.innerHTML = "";
+      } else {
+        pdfNavTabs.style.display = "flex";
+        pdfNavTabs.innerHTML = currentPdfs.map((src, index) => {
+          const name = src.split("/").pop();
+          const active = index === currentPdfIndex ? "active" : "";
+          return `
+            <button type="button" class="pdf-tab-btn ${active}" data-pdf-index="${index}">
+              <i class="fa-solid fa-file-pdf"></i> ${name}
+            </button>
+          `;
+        }).join("");
+
+        pdfNavTabs.querySelectorAll(".pdf-tab-btn").forEach(tab => {
+          tab.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const idx = parseInt(tab.dataset.pdfIndex, 10);
+            if (!isNaN(idx)) {
+              currentPdfIndex = idx;
+              updatePdfUI();
+            }
+          });
+        });
+      }
+    }
+  }
+
+  function openPdfModal({ pdfs, title, desc, startIndex = 0 }) {
+    currentPdfs = pdfs || [];
+    currentPdfIndex = startIndex >= 0 && startIndex < currentPdfs.length ? startIndex : 0;
+
+    if (pdfModalTitle) pdfModalTitle.textContent = title || "Visor de Documentos PDF";
+    if (pdfModalText) {
+      pdfModalText.textContent = desc || (currentPdfs.length ? `${currentPdfs.length} documento(s) disponible(s).` : "");
+    }
+
+    updatePdfUI();
+
+    if (pdfModal) {
+      pdfModal.classList.add("open");
+      pdfModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  // Hook all PDF buttons
+  document.querySelectorAll(".open-pdf-btn, [data-pdfs], [data-pdf]").forEach(item => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
+      let list = [];
+      if (item.dataset.pdfs) {
+        list = parseMediaList(item.dataset.pdfs);
+      } else if (item.dataset.pdf) {
+        list = [item.dataset.pdf];
+      }
+
+      const title = item.dataset.title || item.querySelector("strong")?.textContent || "Documento PDF";
+      const desc = item.dataset.desc || (list.length > 0
+        ? `Visualizando documento ${title}.`
+        : "Documento en formato PDF.");
+
+      openPdfModal({ pdfs: list, title, desc });
+    });
   });
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeModal();
-  });
+  // Modal Closing & Escape Handling
+  function closeAllModals() {
+    setExpandedMode(false);
 
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
+    if (imageModal) {
+      imageModal.classList.remove("open");
+      imageModal.setAttribute("aria-hidden", "true");
+      if (modalVisual) modalVisual.classList.remove("has-image");
+    }
+
+    if (pdfModal) {
+      pdfModal.classList.remove("open");
+      pdfModal.setAttribute("aria-hidden", "true");
+      if (modalPdfFrame) modalPdfFrame.src = "";
+    }
+
     document.body.style.overflow = "";
   }
 
+  document.querySelectorAll("[data-close-modal]").forEach(el => {
+    el.addEventListener("click", closeAllModals);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      if (isExpanded) {
+        setExpandedMode(false);
+      } else {
+        closeAllModals();
+      }
+    } else if (imageModal && imageModal.classList.contains("open")) {
+      if (event.key === "ArrowRight") {
+        nextGalleryImage();
+      } else if (event.key === "ArrowLeft") {
+        prevGalleryImage();
+      }
+    }
+  });
+
+  // =========================================================
+  // INTERACTIVE CONSOLE
+  // =========================================================
   const consoleForm = document.getElementById("consoleForm");
   const consoleInput = document.getElementById("consoleInput");
   const consoleOutput = document.getElementById("consoleOutput");
@@ -279,6 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }[char]));
   }
 
+  // Back to Top Button
   const backToTop = document.getElementById("backToTop");
   if (backToTop) {
     window.addEventListener("scroll", () => {
@@ -290,6 +659,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // DB Assistant
   const dbAssistant = document.getElementById("dbAssistant");
   const assistantPanel = document.getElementById("assistantPanel");
   const assistantToggle = document.getElementById("assistantToggle");
@@ -323,6 +693,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Active Navigation link on scroll
   const navLinks = [...document.querySelectorAll(".main-nav a")];
   const sectionMap = navLinks
     .map(link => ({ link, section: document.querySelector(link.getAttribute("href")) }))

@@ -38,12 +38,12 @@
     </button>
 
     <nav id="mainNav" class="main-nav" aria-label="Navegación principal">
-      <a href="#home">/home</a>
-      <a href="#about">/about</a>
-      <a href="#units">/units</a>
-      <a href="#projects">/projects</a>
-      <a href="#evidencias">/evidencias</a>
-      <a href="#contact">/contact</a>
+      <a href="#home">/inicio</a>
+      <a href="#about">/acercade</a>
+      <a href="#units">/unidades</a>
+      <!--<a href="#projects">/projects</a>
+      <a href="#evidencias">/evidencias</a>-->
+      <a href="#contact">/contactos</a>
     </nav>
   </header>
 
@@ -240,6 +240,7 @@
 
           <p class="prompt-line"><span class="prompt">$</span> ls semanas/</p>
           <div class="week-list">
+            <!-- Semana 01 -->
             <details class="week-card" open>
               <summary>
                 <span><i class="fa-regular fa-folder"></i> semana_01</span>
@@ -257,58 +258,108 @@
                   </ul>
                 </div>
                 <div class="command-actions">
-                  <button data-demo="Teoría de la Semana 1 lista para editar.">$ cat teoria.txt</button>
-                  <button data-demo="Agrega tu archivo en documentos/practica_01.pdf">$ open practica.pdf</button>
-                  <button data-demo="Agrega tu imagen en img/evidencias/semana01.png">$ view evidencia.png</button>
-                  <button data-demo="Conclusión de la Semana 1 lista para editar.">$ cat conclusion.txt</button>
+                  <button class="open-pdf-btn" 
+                          data-pdfs='["documentos/bs-sema1.pdf"]'
+                          data-title="Semana 01 · Práctica / Documento" 
+                          data-desc="Documento PDF evidencia de la Semana 01.">
+                    $ evidencia.pdf
+                  </button>
+                  <button class="open-evidence-btn" 
+                          data-images='["img/evidencias/Semana1-1.jpeg", "img/evidencias/Semana1-2.jpeg", "img/evidencias/Semana1-3.jpeg", "img/evidencias/Semana1-4.jpeg"]' 
+                          data-title="Semana 01 · Introducción a las Bases de Datos" 
+                          data-desc="Galería de evidencias de la Semana 01 (Semana1-1, Semana1-2, Semana1-3, Semana1-4).">
+                    $ evidencia.png
+                  </button>
                 </div>
               </div>
             </details>
 
+            <!-- Semana 02 -->
             <details class="week-card">
               <summary>
                 <span><i class="fa-regular fa-folder"></i> semana_02</span>
                 <strong>Sistemas Gestores de Bases de Datos</strong>
               </summary>
               <div class="week-content">
-                <ul>
-                  <li>DBMS.</li><li>MySQL.</li><li>PostgreSQL.</li><li>SQL Server.</li><li>Oracle.</li>
-                </ul>
+                <div>
+                  <p class="week-path">~/unidad_01/semana_02</p>
+                  <ul>
+                    <li>DBMS.</li><li>MySQL.</li><li>PostgreSQL.</li><li>SQL Server.</li><li>Oracle.</li>
+                  </ul>
+                </div>
                 <div class="command-actions">
-                  <button data-demo="Contenido editable: DBMS, MySQL, PostgreSQL, SQL Server y Oracle.">$ cat teoria.txt</button>
-                  <button data-demo="Ruta sugerida: documentos/practica_02.pdf">$ open practica.pdf</button>
+                  <button class="open-pdf-btn" 
+                          data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' 
+                          data-title="Semana 02 · Práctica DBMS" 
+                          data-desc="Documento PDF de la práctica de la Semana 02.">
+                    $ practica.pdf
+                  </button>
+                  <button class="open-evidence-btn" 
+                          data-images='["img/evidencias/Semana2-1.jpeg", "img/evidencias/Semana2-2.jpeg", "img/evidencias/Semana2-3.jpeg"]' 
+                          data-title="Semana 02 · Sistemas Gestores de BD" 
+                          data-desc="Galería de evidencias de la Semana 02 (Semana2-1, Semana2-2, Semana2-3).">
+                    $ evidencia.png
+                  </button>
                 </div>
               </div>
             </details>
 
+            <!-- Semana 03 -->
             <details class="week-card">
               <summary>
                 <span><i class="fa-regular fa-folder"></i> semana_03</span>
                 <strong>Arquitectura de Bases de Datos</strong>
               </summary>
               <div class="week-content">
-                <ul>
-                  <li>Nivel interno.</li><li>Nivel conceptual.</li><li>Nivel externo.</li><li>Independencia de datos.</li>
-                </ul>
+                <div>
+                  <p class="week-path">~/unidad_01/semana_03</p>
+                  <ul>
+                    <li>Nivel interno.</li><li>Nivel conceptual.</li><li>Nivel externo.</li><li>Independencia de datos.</li>
+                  </ul>
+                </div>
                 <div class="command-actions">
-                  <button data-demo="Contenido editable sobre arquitectura de tres niveles.">$ cat teoria.txt</button>
-                  <button data-demo="Ruta sugerida: img/evidencias/arquitectura_bd.png">$ view evidencia.png</button>
+                  <button class="open-pdf-btn" 
+                          data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' 
+                          data-title="Semana 03 · Arquitectura BD" 
+                          data-desc="Documento PDF de la práctica de la Semana 03.">
+                    $ practica.pdf
+                  </button>
+                  <button class="open-evidence-btn" 
+                          data-images='["img/evidencias/Semana3-1.jpeg", "img/evidencias/Semana3-2.jpeg"]' 
+                          data-title="Semana 03 · Arquitectura de BD" 
+                          data-desc="Galería de evidencias de la Semana 03 (Semana3-1, Semana3-2).">
+                    $ evidencia.png
+                  </button>
                 </div>
               </div>
             </details>
 
+            <!-- Semana 04 -->
             <details class="week-card">
               <summary>
                 <span><i class="fa-regular fa-folder"></i> semana_04</span>
                 <strong>Modelo Entidad-Relación</strong>
               </summary>
               <div class="week-content">
-                <ul>
-                  <li>Entidades.</li><li>Atributos.</li><li>Relaciones.</li><li>Cardinalidad.</li><li>Claves.</li>
-                </ul>
+                <div>
+                  <p class="week-path">~/unidad_01/semana_04</p>
+                  <ul>
+                    <li>Entidades.</li><li>Atributos.</li><li>Relaciones.</li><li>Cardinalidad.</li><li>Claves.</li>
+                  </ul>
+                </div>
                 <div class="command-actions">
-                  <button data-demo="Contenido editable sobre el modelo Entidad-Relación.">$ cat teoria.txt</button>
-                  <button data-demo="Ruta sugerida: img/evidencias/modelo_er.png">$ view modelo_er.png</button>
+                  <button class="open-pdf-btn" 
+                          data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' 
+                          data-title="Semana 04 · Modelo E-R" 
+                          data-desc="Documento PDF de la práctica de la Semana 04.">
+                    $ practica.pdf
+                  </button>
+                  <button class="open-evidence-btn" 
+                          data-images='["img/evidencias/Semana4-1.jpeg", "img/evidencias/Semana4-2.jpeg"]' 
+                          data-title="Semana 04 · Modelo Entidad-Relación" 
+                          data-desc="Galería de evidencias de la Semana 04 (Semana4-1, Semana4-2).">
+                    $ evidencia.png
+                  </button>
                 </div>
               </div>
             </details>
@@ -330,28 +381,40 @@
               <summary><span><i class="fa-regular fa-folder"></i> semana_05</span><strong>Modelo Entidad-Relación Avanzado</strong></summary>
               <div class="week-content">
                 <ul><li>Entidades fuertes y débiles.</li><li>Generalización y especialización.</li><li>Relaciones complejas.</li></ul>
-                <div class="command-actions"><button data-demo="Semana 5 lista para que agregues teoría, práctica y evidencias.">$ cat contenido.txt</button></div>
+                <div class="command-actions">
+                  <button class="open-pdf-btn" data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' data-title="Semana 05 · Práctica">$ practica.pdf</button>
+                  <button class="open-evidence-btn" data-images='["img/evidencias/Semana5-1.jpeg"]' data-title="Semana 05 · Evidencias">$ evidencia.png</button>
+                </div>
               </div>
             </details>
             <details class="week-card">
               <summary><span><i class="fa-regular fa-folder"></i> semana_06</span><strong>Modelo Relacional</strong></summary>
               <div class="week-content">
                 <ul><li>Relaciones y tuplas.</li><li>Claves primarias y foráneas.</li><li>Integridad referencial.</li></ul>
-                <div class="command-actions"><button data-demo="Semana 6 lista para editar.">$ cat contenido.txt</button></div>
+                <div class="command-actions">
+                  <button class="open-pdf-btn" data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' data-title="Semana 06 · Práctica">$ practica.pdf</button>
+                  <button class="open-evidence-btn" data-images='["img/evidencias/Semana6-1.jpeg"]' data-title="Semana 06 · Evidencias">$ evidencia.png</button>
+                </div>
               </div>
             </details>
             <details class="week-card">
               <summary><span><i class="fa-regular fa-folder"></i> semana_07</span><strong>Normalización</strong></summary>
               <div class="week-content">
                 <ul><li>1FN.</li><li>2FN.</li><li>3FN.</li><li>Dependencias funcionales.</li></ul>
-                <div class="command-actions"><button data-demo="Semana 7 lista para editar.">$ cat normalizacion.txt</button></div>
+                <div class="command-actions">
+                  <button class="open-pdf-btn" data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' data-title="Semana 07 · Práctica">$ practica.pdf</button>
+                  <button class="open-evidence-btn" data-images='["img/evidencias/Semana7-1.jpeg"]' data-title="Semana 07 · Evidencias">$ evidencia.png</button>
+                </div>
               </div>
             </details>
             <details class="week-card">
               <summary><span><i class="fa-regular fa-folder"></i> semana_08</span><strong>Diseño de una Base de Datos</strong></summary>
               <div class="week-content">
                 <ul><li>Requerimientos.</li><li>Diseño conceptual.</li><li>Diseño lógico.</li><li>Diseño físico.</li></ul>
-                <div class="command-actions"><button data-demo="Semana 8 lista para editar.">$ cat diseno_bd.txt</button></div>
+                <div class="command-actions">
+                  <button class="open-pdf-btn" data-pdfs='["documentos/PrimerExamenChangSistemasOperativos.pdf"]' data-title="Semana 08 · Práctica">$ practica.pdf</button>
+                  <button class="open-evidence-btn" data-images='["img/evidencias/Semana8-1.jpeg"]' data-title="Semana 08 · Evidencias">$ evidencia.png</button>
+                </div>
               </div>
             </details>
           </div>
@@ -633,32 +696,44 @@ ORDER BY e.nombre;</code></pre>
       </div>
 
       <div class="evidence-grid reveal">
-        <button class="evidence-item" data-image="placeholder-1">
+        <button class="evidence-item" 
+                data-images='["img/evidencias/Semana1-1.jpeg", "img/evidencias/Semana1-2.jpeg", "img/evidencias/Semana1-3.jpeg", "img/evidencias/Semana1-4.jpeg"]' 
+                data-title="Semana 01 · Introducción BD" 
+                data-desc="Galería de evidencias de la Semana 01 (Semana1-1, Semana1-2, Semana1-3, Semana1-4).">
           <span class="file-permission">-rw-r--r--</span>
           <i class="fa-regular fa-image"></i>
-          <strong>evidencia_01.png</strong>
-          <small>Semana 01 · Introducción BD</small>
+          <strong>Semana 01 (4 fotos)</strong>
+          <small>Semana1-1, Semana1-2, Semana1-3, Semana1-4</small>
         </button>
 
-        <button class="evidence-item" data-image="placeholder-2">
+        <button class="evidence-item" 
+                data-images='["img/evidencias/Semana2-1.jpeg", "img/evidencias/Semana2-2.jpeg", "img/evidencias/Semana2-3.jpeg"]' 
+                data-title="Semana 02 · Sistemas Gestores BD" 
+                data-desc="Evidencia de la Semana 02 (Semana2-1, Semana2-2, Semana2-3).">
           <span class="file-permission">-rw-r--r--</span>
           <i class="fa-regular fa-image"></i>
-          <strong>modelo_er.png</strong>
+          <strong>Semana 02 (3 fotos)</strong>
+          <small>Semana2-1, Semana2-2, Semana2-3</small>
+        </button>
+
+        <button class="evidence-item" 
+                data-images='["img/evidencias/Semana3-1.jpeg", "img/evidencias/Semana3-2.jpeg"]' 
+                data-title="Semana 03 · Arquitectura BD" 
+                data-desc="Evidencias de la Semana 03 (Semana3-1, Semana3-2).">
+          <span class="file-permission">-rw-r--r--</span>
+          <i class="fa-regular fa-image"></i>
+          <strong>Semana 03</strong>
+          <small>Semana 03 · Arquitectura BD</small>
+        </button>
+
+        <button class="evidence-item" 
+                data-images='["img/evidencias/Semana4-1.jpeg", "img/evidencias/Semana4-2.jpeg"]' 
+                data-title="Semana 04 · Modelo Entidad-Relación" 
+                data-desc="Evidencias de la Semana 04 (Semana4-1, Semana4-2).">
+          <span class="file-permission">-rw-r--r--</span>
+          <i class="fa-regular fa-image"></i>
+          <strong>Semana 04</strong>
           <small>Semana 04 · Modelo E-R</small>
-        </button>
-
-        <button class="evidence-item" data-image="placeholder-3">
-          <span class="file-permission">-rw-r--r--</span>
-          <i class="fa-regular fa-image"></i>
-          <strong>normalizacion.png</strong>
-          <small>Semana 07 · 1FN / 2FN / 3FN</small>
-        </button>
-
-        <button class="evidence-item" data-image="placeholder-4">
-          <span class="file-permission">-rw-r--r--</span>
-          <i class="fa-regular fa-image"></i>
-          <strong>consulta_sql.png</strong>
-          <small>Semana 11 · Consultas SQL</small>
         </button>
       </div>
     </section>
@@ -675,25 +750,49 @@ ORDER BY e.nombre;</code></pre>
           <span class="permission">-rw-r--r--</span>
           <i class="fa-solid fa-file-pdf"></i>
           <strong>practica_01.pdf</strong>
-          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/practica_01.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+          <div class="doc-actions">
+            <button class="open-pdf-btn" 
+                    data-pdf="documentos/PrimerExamenChangSistemasOperativos.pdf" 
+                    data-title="Práctica 01 · Fundamentos" 
+                    data-desc="Documento de práctica 01 del curso.">ver</button>
+            <a href="documentos/PrimerExamenChangSistemasOperativos.pdf" download class="doc-download-btn">descargar</a>
+          </div>
         </div>
         <div class="document-row">
           <span class="permission">-rw-r--r--</span>
           <i class="fa-solid fa-file-pdf"></i>
           <strong>informe_unidad_01.pdf</strong>
-          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/informe_unidad_01.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+          <div class="doc-actions">
+            <button class="open-pdf-btn" 
+                    data-pdf="documentos/PrimerExamenChangSistemasOperativos.pdf" 
+                    data-title="Informe Unidad 01" 
+                    data-desc="Informe consolidado de la Unidad 01.">ver</button>
+            <a href="documentos/PrimerExamenChangSistemasOperativos.pdf" download class="doc-download-btn">descargar</a>
+          </div>
         </div>
         <div class="document-row">
           <span class="permission">-rw-r--r--</span>
           <i class="fa-solid fa-file-pdf"></i>
           <strong>laboratorio_sql.pdf</strong>
-          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/laboratorio_sql.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+          <div class="doc-actions">
+            <button class="open-pdf-btn" 
+                    data-pdf="documentos/PrimerExamenChangSistemasOperativos.pdf" 
+                    data-title="Laboratorio SQL" 
+                    data-desc="Guía de laboratorio SQL.">ver</button>
+            <a href="documentos/PrimerExamenChangSistemasOperativos.pdf" download class="doc-download-btn">descargar</a>
+          </div>
         </div>
         <div class="document-row">
           <span class="permission">-rw-r--r--</span>
           <i class="fa-solid fa-file-pdf"></i>
           <strong>proyecto_final.pdf</strong>
-          <div class="doc-actions"><button data-demo="Coloca el PDF en documentos/proyecto_final.pdf">ver</button><button data-demo="Puedes enlazar este botón al archivo real.">descargar</button></div>
+          <div class="doc-actions">
+            <button class="open-pdf-btn" 
+                    data-pdf="documentos/PrimerExamenChangSistemasOperativos.pdf" 
+                    data-title="Proyecto Final BD" 
+                    data-desc="Documentación y memoria del proyecto final.">ver</button>
+            <a href="documentos/PrimerExamenChangSistemasOperativos.pdf" download class="doc-download-btn">descargar</a>
+          </div>
         </div>
       </div>
     </section>
@@ -789,17 +888,84 @@ ORDER BY e.nombre;</code></pre>
     </button>
   </aside>
 
+  <!-- Modal para Galería de Imágenes -->
   <div id="imageModal" class="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" data-close-modal aria-label="Cerrar">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div id="modalVisual" class="modal-visual">
-        <i class="fa-regular fa-image"></i>
+    <div class="modal-card modal-gallery-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header-bar">
+        <div class="modal-badge-group">
+          <span class="modal-counter-badge" id="modalCounter">1 / 1</span>
+          <span class="modal-filename-badge" id="modalFilename">archivo.jpeg</span>
+        </div>
+        <div class="modal-header-actions">
+          <button id="modalExpandBtn" class="modal-action-btn" type="button" title="Expandir imagen (pantalla completa)">
+            <i class="fa-solid fa-expand"></i> <span id="expandBtnText">Expandir</span>
+          </button>
+          <button class="modal-close" data-close-modal aria-label="Cerrar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
-      <h3 id="modalTitle">Vista de evidencia</h3>
-      <p id="modalText">Reemplaza este marcador por una imagen real dentro de img/evidencias/.</p>
+
+      <div id="modalVisual" class="modal-visual modal-gallery-visual">
+        <button class="gallery-nav prev" id="galleryPrev" aria-label="Imagen anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <img id="modalImg" src="" alt="Vista previa de evidencia">
+        <i id="modalIcon" class="fa-regular fa-image"></i>
+        <button class="gallery-nav next" id="galleryNext" aria-label="Imagen siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="gallery-thumbnails" id="galleryThumbs"></div>
+
+      <div class="modal-meta">
+        <h3 id="modalTitle">Vista de evidencia</h3>
+        <p id="modalText">Galería de imágenes de evidencia.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Visor de PDF / Documentos -->
+  <div id="pdfModal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card modal-pdf-card" role="dialog" aria-modal="true" aria-labelledby="pdfModalTitle">
+      <div class="modal-header-bar">
+        <div class="modal-badge-group">
+          <span class="pdf-tag-badge"><i class="fa-solid fa-file-pdf"></i> PDF</span>
+          <span class="modal-filename-badge" id="pdfModalFilename">documento.pdf</span>
+        </div>
+        <div class="modal-header-actions">
+          <a id="pdfOpenNewTab" href="#" target="_blank" rel="noopener noreferrer" class="modal-action-btn" title="Abrir en pestaña nueva">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Abrir</span>
+          </a>
+          <a id="pdfDownloadBtn" href="#" download class="modal-action-btn" title="Descargar documento">
+            <i class="fa-solid fa-download"></i> <span>Descargar</span>
+          </a>
+          <button class="modal-close" data-close-modal aria-label="Cerrar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="pdf-nav-tabs" id="pdfNavTabs" style="display:none;"></div>
+
+      <div class="pdf-viewer-container">
+        <iframe id="modalPdfFrame" src="" title="Visor de documento PDF"></iframe>
+        <div class="pdf-fallback" id="pdfFallback">
+          <i class="fa-solid fa-file-pdf"></i>
+          <p>Tu navegador no permite previsualizar este PDF directamente.</p>
+          <a id="pdfFallbackLink" href="#" target="_blank" class="command-button">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir PDF
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-meta">
+        <h3 id="pdfModalTitle">Documento Académico</h3>
+        <p id="pdfModalText">Visualización del documento en formato PDF.</p>
+      </div>
     </div>
   </div>
 
